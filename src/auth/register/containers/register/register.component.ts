@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,8 @@ export class RegisterComponent {
   error: string;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -35,6 +37,7 @@ export class RegisterComponent {
     const {email, password} = event.value;
     try {
       await this.authService.createUser(email, password);
+      this.router.navigate(['/'])
     } catch (err) {
       this.error = err.message;
     }
