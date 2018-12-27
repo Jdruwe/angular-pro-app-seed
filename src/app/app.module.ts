@@ -8,7 +8,11 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 import { AppNavComponent } from './components/app-nav/app-nav.component';
 import { HealthModule } from '../health/health.module';
 
-export const ROUTES: Routes = [];
+export const ROUTES: Routes = [
+  {
+    path: '', pathMatch: 'full', redirectTo: 'schedule'
+  }
+];
 
 @NgModule({
   imports: [
