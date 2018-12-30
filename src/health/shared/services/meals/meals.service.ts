@@ -42,6 +42,11 @@ export class MealsService {
       .remove(key);
   }
 
+  updateMeal(key: string, meal: Meal) {
+    return this.db.object(`meals/${this.uid}/${key}`)
+      .update(meal);
+  }
+
   getMeal(key: string) {
     if (!key) return Observable.of({});
     return this.store.select<Meal[]>('meals')
